@@ -1,12 +1,7 @@
 import React from "react";
 import styles from "./Option.module.css";
 
-const Option = ({ updateFeedback, totalFeedback }) => {
-  const resetFeedback = () => {
-    localStorage.removeItem("feedback");
-    window.location.reload();
-  };
-
+const Option = ({ updateFeedback, totalFeedback, resetFeedback }) => {
   return (
     <div className={styles.option}>
       <button onClick={() => updateFeedback("good")}>Good</button>

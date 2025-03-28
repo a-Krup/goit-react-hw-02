@@ -22,15 +22,23 @@ function App() {
     }));
   };
 
+  const resetFeedback = () => {
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
+    localStorage.removeItem("feedback");
+  };
+
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
   const positiveFeedback =
     Math.round((feedback.good / totalFeedback) * 100) || 0;
+
   return (
     <div className="App">
-      <h1>Sip Happens Café</h1>
-
       <Description />
-      <Option updateFeedback={updateFeedback} totalFeedback={totalFeedback} />
+      <Option
+        updateFeedback={updateFeedback}
+        totalFeedback={totalFeedback}
+        resetFeedback={resetFeedback}
+      />
       {totalFeedback > 0 ? (
         <Feedback
           feedback={feedback}
